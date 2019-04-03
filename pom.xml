@@ -43,9 +43,14 @@
     </licenses>
 
     <scm>
+        <!-- This is a fork of the real Pushy project, the SCM properties for which are in this comment.
         <connection>scm:git:https://github.com/relayrides/pushy.git</connection>
         <developerConnection>scm:git:git@github.com:relayrides/pushy.git</developerConnection>
         <url>https://github.com/relayrides/pushy</url>
+        -->
+        <connection>scm:git:https://github.com/NetNow/pushy.git</connection>
+        <developerConnection>scm:git:https://github.com/NetNow/pushy.git</developerConnection>
+        <url>https://github.com/NetNow/pushy</url>
     </scm>
 
     <developers>

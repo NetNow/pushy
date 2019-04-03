@@ -158,6 +158,9 @@
         <netty.version>4.1.32.Final</netty.version>
         <slf4j.version>1.7.21</slf4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <reposerver-releases.url>http://reposerver.int-link.com/nexus/repository/thirdparty</reposerver-releases.url>
+        <reposerver-snapshots.url>http://reposerver.int-link.com/nexus/repository/thirdparty-snapshots</reposerver-snapshots.url>
     </properties>
 
     <build>
@@ -259,6 +262,19 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>thirdparty</id>
+            <name>Release Repository</name>
+            <url>${reposerver-releases.url}</url>
+        </repository>
+        <snapshotRepository>
+            <id>thirdparty-snapshots</id>
+            <name>Snapshot Repository</name>
+            <url>${reposerver-snapshots.url}</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <!-- Removed profiles as we don't need GPG signing or Javadoc for what should be a release just for us. -->
 

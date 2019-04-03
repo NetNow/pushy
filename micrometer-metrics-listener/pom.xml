@@ -30,8 +30,8 @@
 
     <parent>
         <artifactId>pushy-parent</artifactId>
-        <groupId>com.turo</groupId>
-        <version>0.14.0-SNAPSHOT</version>
+        <groupId>com.myitops.thirdparty.com.turo</groupId>
+        <version>0.13.9-SNAPSHOT</version>
     </parent>
 
     <dependencies>

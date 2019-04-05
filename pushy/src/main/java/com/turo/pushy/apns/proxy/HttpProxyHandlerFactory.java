@@ -62,10 +62,10 @@ public class HttpProxyHandlerFactory implements ProxyHandlerFactory {
             throws URISyntaxException {
 
         URI hostUri = new URI("https", apnsHost, null, null);
-        Proxy proxy = ProxyLocator.getProxyForUri(hostUri, Proxy.Type.HTTP);
+        SocketAddress proxyAddress = ProxyLocator.getProxyAddressForUri(hostUri, Proxy.Type.HTTP);
 
-        if (proxy != null) {
-            return new HttpProxyHandlerFactory(proxy.address());
+        if (proxyAddress != null) {
+            return new HttpProxyHandlerFactory(proxyAddress);
         } else {
             return null;
         }

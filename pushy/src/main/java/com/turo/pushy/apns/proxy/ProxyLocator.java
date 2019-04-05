@@ -2,6 +2,7 @@ package com.turo.pushy.apns.proxy;
 
 import java.net.Proxy;
 import java.net.ProxySelector;
+import java.net.SocketAddress;
 import java.net.URI;
 import java.util.List;
 
@@ -19,21 +20,21 @@ class ProxyLocator {
     private static final Logger log = LoggerFactory.getLogger(ProxyLocator.class);
 
     /**
-     * Searches for any system-wide {@link Proxy} of a given {@link Proxy.Type} for a given {@link URI}.
+     * Returns the {@link SocketAddress} for any system-wide {@link Proxy} of a given {@link Proxy.Type} for a given {@link URI}.
      *
      * @param uri the URI to find any system proxy for.
      * @param proxyType the types of proxy to find for the URI.
-     * @return any appropriate {@link Proxy} instance, or <code>null</code> if there were none.
+     * @return the {@link SocketAddress} of any <code>Proxy</code> found, or <code>null</code> if there were none.
      * @since 0.14
      */
-    static Proxy getProxyForUri(final URI uri, final Proxy.Type proxyType) {
+    static SocketAddress getProxyAddressForUri(final URI uri, final Proxy.Type proxyType) {
         ProxySelector defaultProxySelector = ProxySelector.getDefault();
         List<Proxy> proxiesForUri = defaultProxySelector.select(uri);
         log.debug("Proxies for URI \"{}\" were {}", uri, proxiesForUri);
 
         for (java.net.Proxy proxy : proxiesForUri) {
             if (proxy.type() == proxyType) {
-                return proxy;
+                return proxy.address();
             }
         }
 

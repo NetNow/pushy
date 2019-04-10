@@ -25,14 +25,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>pushy</artifactId>
-    <version>0.13.10-SNAPSHOT</version>
+    <version>0.13.10</version>
     <packaging>bundle</packaging>
     <name>Pushy</name>
 
     <parent>
         <groupId>com.myitops.thirdparty.com.turo</groupId>
         <artifactId>pushy-parent</artifactId>
-        <version>0.13.10-SNAPSHOT</version>
+        <version>0.13.10</version>
     </parent>
 
     <dependencies>

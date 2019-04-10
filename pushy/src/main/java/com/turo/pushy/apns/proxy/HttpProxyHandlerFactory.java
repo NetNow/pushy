@@ -22,6 +22,7 @@
 
 package com.turo.pushy.apns.proxy;
 
+import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.SocketAddress;
 import java.net.URI;
@@ -62,10 +63,14 @@ public class HttpProxyHandlerFactory implements ProxyHandlerFactory {
             throws URISyntaxException {
 
         URI hostUri = new URI("https", apnsHost, null, null);
-        SocketAddress proxyAddress = ProxyLocator.getProxyAddressForUri(hostUri, Proxy.Type.HTTP);
+        InetSocketAddress proxyAddress = (InetSocketAddress) ProxyLocator.getProxyAddressForUri(hostUri, Proxy.Type.HTTP);
 
         if (proxyAddress != null) {
+            if (proxyAddress.isUnresolved()) {
+                proxyAddress = new InetSocketAddress(proxyAddress.getHostString(), proxyAddress.getPort());
+            }
             return new HttpProxyHandlerFactory(proxyAddress);
+
         } else {
             return null;
         }
